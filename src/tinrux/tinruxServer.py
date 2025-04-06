@@ -18,7 +18,7 @@ import time
 
 class TinruxServer:
 	def __init__(self, hostname, port, buffer_size=1024*1024, rdb_file="tdb.json", new=True):
-		self.version = "1.0"
+		self.version = "0.0.1"
 		self.host = hostname
 		self.port = port
 		self.buffer = buffer_size
@@ -156,7 +156,7 @@ class TinruxServer:
 			client.close()
 			print(f"[*] Client : {client} has  Disconnected [*]")
 	def main(self, auto_time=900):
-		print(f"[+] Running redis-ux server {self.version} on {self.host} at {self.port} [+]")
+		print(f"[+] Running Tinrux server {self.version} on {self.host} at {self.port} [+]")
 		self.load_rdb()
 		auto_saver = threading.Thread(target=self.auto_save, args=(auto_time), daemon=True)
 		while True:
