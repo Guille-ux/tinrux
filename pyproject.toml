@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "tinrux"
 dynamic = ["version"]
-description = ''
+description = 'A database writed entirely on python, Tinrux is not redis'
 readme = "README.md"
 requires-python = ">=3.6"
 keywords = []

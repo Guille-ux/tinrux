@@ -2,6 +2,6 @@
 #
 # SPDX-License-Identifier: GPLv3
 
-import tinruxClient as client
-import tinruxServer as server
-import cli
+from . import tinruxClient as client
+from . import tinruxServer as server
+from . import cli

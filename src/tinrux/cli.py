@@ -15,8 +15,8 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import sys
-import tinruxClient as client
-import tinruxServer as server
+from . import tinruxClient as client
+from . import tinruxServer as server
 
 message = """    Tinrux  Copyright (C) 2025  Guillermo Leira Temes
     This program comes with ABSOLUTELY NO WARRANTY.
