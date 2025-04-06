@@ -78,16 +78,16 @@ class TinruxServer:
 	def proccess_args(self, args):
 		command = args[0]["data"]
 		if command == b"PING" or command == b"ping":
-			return PONG
+			return "+PONG\r\n"
 		elif command == b"SET" or command == b"set":
-			if len(args) != 4:
+			if len(args) != 3:
 				return "-ERR wrong number of arguments for 'set' command \r\n"
 			key = args[1]["data"].decode()
 			value = args[2]["data"].decode()
 			self.db[key] = value
 			return "+OK\r\n"
 		elif command == b"GET" or command == b"get":
-			if len(args) != 3:
+			if len(args) != 2:
 				return "-ERR wrong number of arguments for 'get' command\r\n"
 			key = args[1]["data"].decode()
 			if key in self.db:

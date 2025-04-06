@@ -54,7 +54,7 @@ def main():
 					break
 				opt = command.split()[0]
 				args = command.split()[1:]
-				response = cliClient.send_command(opt, args)
+				response = cliClient.send_command(opt, *args)
 				print(response)
 				command = input(f"({host}:{port})>>> ")
 			print("Exiting...")
