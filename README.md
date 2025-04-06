@@ -47,7 +47,7 @@ Python example:
 ```python
 (localhost:5000)>>> SET greeting "Hello Tinrux"
 OK
-:(localhost:5000)>>> GET greeting
+(localhost:5000)>>> GET greeting
 Hello Tinrux
 ```
 
@@ -91,3 +91,10 @@ tinrux/
 
 GNU General Public License v3.0 - See LICENSE.txt.
 
+## Contributors
+Make pull request to be here!
+
+
+## Contributing
+
+[Contributing](CONTRIBUTING.md)
