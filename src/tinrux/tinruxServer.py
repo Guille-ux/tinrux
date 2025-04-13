@@ -158,7 +158,7 @@ class TinruxServer:
 	def main(self, auto_time=900):
 		print(f"[+] Running Tinrux server {self.version} on {self.host} at {self.port} [+]")
 		self.load_rdb()
-		auto_saver = threading.Thread(target=self.auto_save, args=(auto_time), daemon=True)
+		auto_saver = threading.Thread(target=self.auto_save, args=(auto_time,), daemon=True)
 		while True:
 			conn, address = self.server_socket.accept()
 			thread = threading.Thread(target=self.handle_client, args=(conn, address), daemon=True)
