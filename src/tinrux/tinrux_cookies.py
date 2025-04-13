@@ -38,7 +38,9 @@ class TinruxCookies:
         Get a cookie by name.
         """
         cookie = self.client.send_command("GET", cookie_name)
-        if cookie.startswith("ERR"):
+        if cookie is None:
+            return None
+        elif cookie.startswith("ERR"):
             return None
         return cookie
     
