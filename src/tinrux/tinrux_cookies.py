@@ -14,6 +14,7 @@
 # Copyright (c) 2025 Guillermo Leira Temes
 
 import time
+from . import client
 
 # a cookie system made up in tinrux
 
