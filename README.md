@@ -15,6 +15,7 @@ A lightweight Redis-inspired database written in pure Python, designed for small
 - **Server/Client mode**: Runs as a standalone service.
 - **Zero dependencies**: Pure Python (≥ 3.6).
 - **Autosaving system**: Saves automatically the database (by default every 15 minutes).
+- **Cookie's management system**: Has a cookie's management system for logins and more!
 
 ## 🚀 Installation
 
