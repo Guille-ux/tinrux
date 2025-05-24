@@ -122,6 +122,38 @@ class TinruxServer:
 			else:
 				return "-ERR the key doesn't exist\r\n"
 			return "+OK\r\n"
+		elif command == b"POP" or command == b"pop":
+			if len(args)!=3:
+				return "-ERR wrong number of arguments for 'pop' command\r\n"
+			key = args[1]["data"].decode()
+			if key in self.db:
+				try:
+					self.db[key].pop()
+				except Exception as e:
+					return f"-ERR Internal Error : {e} \r\n"
+				return "+OK\r\n"
+			else:
+				return "-ERR key doesn't exists\r\n"
+		elif command == b"PUSH" or command == b"push":
+			if len(args) != 4:
+				return "-ERR wrong number of arguments for 'push' command \r\n"
+			key = args[1]["data"].decode()
+			value = args[2]["data"].decode()
+			try:
+				self.db[key].append(value)
+			except Exception as e:
+				return f"-ERR Internal Error : {e} \r\n"
+			return "+OK\r\n"
+		elif command == b"STACK" or command == b"stack":
+			if len(args) != 4:
+				return "-ERR wrong number of arguments for 'stack' command \r\n"
+			key = args[1]["data"].decode()
+			value = args[2]["data"].decode()
+			try:
+				self.db[key] = []
+			except Exception as e:
+				return f"-ERR Internal Error : {e} \r\n"
+			return "+OK\r\n"
 		elif command == b"HELP" or command == b"help":
 			help = "LIST OF COMMAND AVALIABLE:\r\n"
 			help += "PING \r\n"
@@ -130,6 +162,8 @@ class TinruxServer:
 			help += "DEL key\r\n"
 			help += "EXPIRE key time\r\n"
 			help += "SAVE\r\n"
+			help += "PUSH key value\r\n"
+			help += "POP key\r\n"
 			help += "HELP\r\n"
 			return help
 		else:

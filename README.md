@@ -64,14 +64,17 @@ This choice aligns with Tinrux's philosophy of simplicity, transparency and mini
 
 ## 📚 Available Commands
 
-| Command | Description              | Example       |
-| ------- | ------------------------ | ------------- |
-| SET     | Store a value            | SET key value |
-| GET     | Retrieve a value         | GET key       |
-| DEL     | Delete a key             | DEL key       |
-| EXPIRE  | Set key expiration (sec) | EXPIRE key 10 |
-| SAVE    | Manual data persistence  | SAVE          |
-| HELP    | Help command             | HELP          |
+| Command | Description                             | Example       |
+| ------- | ------------------------                | ------------- |
+| SET     | Store a value                           | SET key value |
+| GET     | Retrieve a value                        | GET key       |
+| DEL     | Delete a key                            | DEL key       |
+| EXPIRE  | Set key expiration (sec)                | EXPIRE key 10 |
+| SAVE    | Manual data persistence                 | SAVE          |
+| PUSH    | PUSH NEW DATA                           | PUSH key 5    |
+| POP     | POP A VALUE                             | POP key       |
+| STACK   | initializes a entry as a stack          | POP key       |
+| HELP    | Help command                            | HELP          |
 
 ## 📦 Project Structure
 
