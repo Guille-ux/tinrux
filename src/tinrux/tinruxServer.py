@@ -1,7 +1,7 @@
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# any later version.
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
@@ -9,16 +9,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 # Copyright (c) 2025 Guillermo Leira Temes
-# 
+
 import socket  # noqa: F401
 import threading
 import json
 import time
+from . import __about__
 
 
 class TinruxServer:
 	def __init__(self, hostname, port, buffer_size=1024*1024, rdb_file="tdb.json", new=True):
-		self.version = "0.0.1"
+		self.version = __about__.__version__
 		self.host = hostname
 		self.port = port
 		self.buffer = buffer_size
@@ -128,10 +129,10 @@ class TinruxServer:
 			key = args[1]["data"].decode()
 			if key in self.db:
 				try:
-					self.db[key].pop()
+					h=self.db[key].pop()
 				except Exception as e:
 					return f"-ERR Internal Error : {e} \r\n"
-				return "+OK\r\n"
+				return f"{len(h)}\r\n{h}\r\n"
 			else:
 				return "-ERR key doesn't exists\r\n"
 		elif command == b"PUSH" or command == b"push":
@@ -145,7 +146,7 @@ class TinruxServer:
 				return f"-ERR Internal Error : {e} \r\n"
 			return "+OK\r\n"
 		elif command == b"STACK" or command == b"stack":
-			if len(args) != 4:
+			if len(args) != 3:
 				return "-ERR wrong number of arguments for 'stack' command \r\n"
 			key = args[1]["data"].decode()
 			value = args[2]["data"].decode()
@@ -164,6 +165,7 @@ class TinruxServer:
 			help += "SAVE\r\n"
 			help += "PUSH key value\r\n"
 			help += "POP key\r\n"
+			help += "STACK key\r\n"
 			help += "HELP\r\n"
 			return help
 		else:
